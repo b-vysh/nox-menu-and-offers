@@ -1,28 +1,82 @@
-# Nox Menu and Offers
+# NOX - Restobar Menu & Offers
 
-A beautifully designed, mobile-first web application for a digital menu and offers catalog. 
-Features include dynamic category filtering, price sliders, offer type selections, and built-in local cart and liked items functionality.
+![NOX Banner](./images/Frame%209.png) <!-- Update banner path if you have a primary logo -->
 
-## Deployment to Vercel
+NOX is a fully responsive, mobile-first web application designed to serve as a digital menu and interactive offers catalog for a modern restobar. The application provides a seamless browsing experience with dynamic category filtering, a local shopping cart, and a "Liked Items" system. 
 
-1. **Upload to GitHub**:
-   - Create a new repository on your GitHub account. Let's call it `nox-menu-and-offers`.
-   - Open your terminal or command prompt in this folder (`e:\Offers Portfolio`).
-   - Run the following commands to push your code:
-     ```bash
-     git init
-     git add .
-     git commit -m "Initial commit of Nox Menu and Offers"
-     git branch -M main
-     git remote add origin https://github.com/YOUR_USERNAME/nox-menu-and-offers.git
-     git push -u origin main
-     ```
+Built entirely as a static frontend application, NOX delivers high performance and instant interactions without the need for a backend server.
 
-2. **Deploy on Vercel**:
-   - Go to [Vercel.com](https://vercel.com/) and log in with your GitHub account.
-   - Click **Add New** -> **Project**.
-   - Find your `nox-menu-and-offers` repository in the list and click **Import**.
-   - On the configure project screen, you can leave everything as the default! Vercel automatically detects that this is a static HTML/JS/CSS site.
-   - Click **Deploy**.
+---
 
-Within seconds, Vercel will build your project and provide you with a live, shareable URL!
+## 🚀 Features
+
+- **Interactive Digital Menu:** Browse through various drink and food categories.
+- **Smart Cascading Filters:** Narrow down products by specific price ranges (e.g., Under ₹500) and curated offer types (e.g., Happy Hours, Budget Friendly).
+- **Cart & Order Management:** Add items to a shopping cart, adjust quantities, apply promo codes, and specify order preferences (Dine-in vs. Pickup).
+- **Favorites System:** Users can "Like" their favorite items for quick access later in the session.
+- **Modern UI/UX:** Features a sleek dark-mode aesthetic with custom scrollbars, micro-animations, horizontal scroll-snapping, and glassmorphism design elements.
+- **State Persistence:** Filter states and user selections persist seamlessly while navigating between different views.
+
+---
+
+## 🛠️ Tech Stack
+
+This project is built using core web technologies, ensuring a lightweight footprint and maximum browser compatibility:
+
+- **HTML5:** Semantic structure and layout.
+- **CSS3:** Custom styling, CSS Grid/Flexbox layouts, and CSS animations (no external utility frameworks).
+- **JavaScript (ES6+):** Modular, vanilla JavaScript handling state management, DOM manipulation, and event delegation.
+
+---
+
+## 📂 Project Structure
+
+```text
+├── images/             # Static image assets and SVG icons
+├── js/                 # Modular JavaScript files
+│   ├── data.js         # Mock product database and inventory
+│   ├── filters.js      # Logic for categorizing and filtering products
+│   ├── main.js         # Entry point and global event listeners
+│   ├── modal.js        # Logic for opening/closing UI overlays
+│   ├── render.js       # DOM generation and HTML rendering functions
+│   └── state.js        # Centralized application state manager
+├── index.html          # Main HTML document
+└── styles.css          # Global stylesheet
+```
+
+---
+
+## 💻 Getting Started
+
+Because NOX is a fully static application, getting it running locally is incredibly straightforward.
+
+### Prerequisites
+You only need a modern web browser and a local HTTP server to avoid CORS issues when loading modular JavaScript.
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/nox-menu-and-offers.git
+   cd nox-menu-and-offers
+   ```
+
+2. **Serve the application:**
+   You can use any local web server. If you have Node.js installed, you can run:
+   ```bash
+   npx http-server . -p 8080 -s
+   ```
+   *Alternatively, if you use VS Code, you can install the "Live Server" extension and click "Go Live".*
+
+3. **View the app:**
+   Open your browser and navigate to `http://localhost:8080`.
+
+---
+
+## 🌐 Architecture Note
+
+This project is entirely static. All product data is mocked directly via `js/data.js`, and user sessions (like the cart and liked items) are managed entirely client-side. It can be easily deployed to any static hosting service with zero configuration.
+
+---
+
+*Designed and developed for a premium restobar experience.*
