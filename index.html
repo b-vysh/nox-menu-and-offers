@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOX</title>
+  <link rel="icon" type="image/png" href="./images/Subtract.png" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="splash-screen">
+    <img src="./images/Frame 9.png" alt="NOX Logo" class="splash-logo-img" />
+  </div>
+
+  <h1 class="page-heading">NOX</h1>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="search-box">
+      <img src="./images/search.svg" alt="Search" class="search-icon" />
+      <input type="text" class="search-input" placeholder="Today Happy hours" />
+      <span class="search-clear" style="display: none;">&times;</span>
+    </div>
+    <div class="filter-box">
+      <img src="./images/filter.svg" alt="Filter" class="filter-icon" />
+    </div>
+  </div>
+
+  <!-- Filter Overlay -->
+  <div id="filter-overlay" class="filter-overlay">
+    <div class="filter-content">
+      <div class="filter-header">Smart Filters</div>
+      <div class="filter-scroll-content">
+      <div class="filter-option" data-target="drink-type" id="filter-option-category">Category</div>
+      <div class="filter-section" id="drink-type"></div>
+
+      <div class="filter-option" data-target="price-range" id="filter-option-price">Price Range</div>
+      <div class="filter-section" id="price-range"></div>
+      
+      <div class="filter-option" data-target="offers" id="filter-option-offers">Offers</div>
+      <div class="filter-section" id="offers"></div>
+      </div>
+
+      <div class="filter-actions">
+        <div class="filter-btn reset">Reset</div>
+        <div class="filter-btn apply">Apply Filters</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tags -->
+  <div class="tag-container" id="tag-container"></div>
+  <div class="active-filters-container" id="active-filters"></div>
+
+  <!-- Product Sections -->
+  <div class="section-header"><div class="section-title">Today's Deal</div><div class="section-link">See All</div></div>
+  <div class="scroll-section" id="product-list-5"></div>
+
+  <div class="section-header"><div class="section-title">Trending Now</div><div class="section-link">See All</div></div>
+  <div class="scroll-section" id="product-list"></div>
+
+  <div class="section-header"><div class="section-title">Today's Happy Hours</div><div class="section-link">See All</div></div>
+  <div class="scroll-section" id="product-list-2"></div>
+
+  <div class="section-header"><div class="section-title">Premium Selection</div><div class="section-link">See All</div></div>
+  <div class="scroll-section" id="product-list-4"></div>
+
+  <div class="section-header"><div class="section-title">Budget Friendly</div><div class="section-link">See All</div></div>
+  <div class="scroll-section" id="product-list-3"></div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <div class="nav-item active"><img src="./images/home.svg" class="nav-icon" alt="Home" /><div class="nav-label">Home</div></div>
+    <div class="nav-item"><img src="./images/grid.svg" class="nav-icon faded" alt="Category" /><div class="nav-label faded">Category</div></div>
+    <div class="nav-item">
+      <div class="icon-wrapper">
+        <img src="./images/heart.svg" class="nav-icon faded" alt="Liked" />
+        <span id="liked-badge" class="nav-badge" style="display: none;">0</span>
+      </div>
+      <div class="nav-label faded">Liked</div>
+    </div>
+    <div class="nav-item">
+      <div class="icon-wrapper">
+        <img src="./images/cart.svg" class="nav-icon faded" alt="Cart" />
+        <span id="cart-badge" class="nav-badge" style="display: none;">0</span>
+      </div>
+      <div class="nav-label faded">Cart</div>
+    </div>
+  </div>
+
+  <!-- Backdrop -->
+  <div id="overlay-backdrop" class="overlay-backdrop"></div>
+
+  <!-- Liked Overlay -->
+  <div id="liked-overlay" class="liked-overlay">
+    <div class="liked-content">
+      <div class="liked-header"><div class="liked-title">Liked</div></div>
+      <div class="liked-items-container grid-layout"></div>
+    </div>
+  </div>
+
+  <!-- Cart Overlay -->
+  <div id="cart-overlay" class="cart-overlay">
+    <div class="cart-content">
+      <div class="cart-header"><div class="cart-title">Cart</div></div>
+      <div class="cart-items-container"></div>
+      <div class="cart-footer">
+        <div class="order-type-toggle">
+          <button class="type-btn active" data-type="pickup">Pickup</button>
+          <button class="type-btn" data-type="dine-in">Dine-in</button>
+        </div>
+        <div class="table-input-container" style="display: none;">
+          <input type="text" id="table-number" placeholder="Enter Table Number" />
+        </div>
+        <div class="promo-container">
+          <input type="text" id="promo-code" placeholder="Promo Code" />
+          <button id="apply-promo">Apply</button>
+        </div>
+        <div class="receipt-breakdown">
+          <div class="receipt-line"><span>Subtotal</span><span id="cart-subtotal">₹0.00</span></div>
+          <div class="receipt-line"><span>Taxes & Fees (5%)</span><span id="cart-tax">₹0.00</span></div>
+          <div class="receipt-line discount-line" style="display: none;"><span>Discount</span><span id="cart-discount">-₹0.00</span></div>
+          <div class="receipt-line total-line"><span>Total</span><span id="cart-total">₹0.00</span></div>
+        </div>
+        <div class="cart-checkout"><div class="checkout-label">Place Order</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Overlay -->
+  <div id="category-overlay" class="category-overlay">
+    <div class="category-content">
+      <div class="category-option">Beer</div>
+      <div class="category-option">Whisky</div>
+      <div class="category-option">Brandy</div>
+      <div class="category-option">Vodka</div>
+      <div class="category-option">Gin</div>
+    </div>
+  </div>
+
+  <!-- Templates -->
+  <template id="category-template">
+    <div class="category-option">Beer</div>
+    <div class="category-option">Whisky</div>
+    <div class="category-option">Brandy</div>
+    <div class="category-option">Vodka</div>
+    <div class="category-option">Gin</div>
+  </template>
+
+  <template id="offers-template">
+    <div class="offer-option">Today's happy hours</div>
+    <div class="offer-option">Budget friendly</div>
+    <div class="offer-option">Premium selection</div>
+    <div class="offer-option">Trending now</div>
+    <div class="offer-option">Today's deal</div>
+  </template>
+
+  <template id="price-range-template">
+    <div class="price-range-container" style="padding: 10px 0;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 15px; color: #fff; font-size: 14px;">
+        <span>₹0</span>
+        <span id="price-range-display" style="font-weight: 700; color: #F4C557;">₹10000</span>
+      </div>
+      <input type="range" id="price-range-input" class="styled-slider" min="0" max="10000" step="100" value="10000" style="width: 100%;" />
+    </div>
+  </template>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="success-modal" style="display: none;">
+    <div class="success-content">
+      <div class="success-icon">✓</div>
+      <div class="success-title">Order Placed!</div>
+      <div class="success-message">Your order has been successfully placed.</div>
+      <button class="success-close">Done</button>
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
