@@ -792,6 +792,13 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
+  align-content: start;
+}
+
+@media (max-width: 480px) {
+  .liked-items-container.grid-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cart-content {

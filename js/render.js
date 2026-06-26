@@ -298,7 +298,7 @@ export function renderLikedOverlay() {
 
   const products = state.allProducts.filter(product => state.likedItems.includes(product.id));
   container.innerHTML = products.length === 0
-    ? `<div style="color: #888; text-align: center; padding: 40px 20px; font-size: 16px;">You haven't liked any items yet.</div>`
+    ? `<div style="grid-column: 1 / -1; color: #888; text-align: center; padding: 40px 20px; font-size: 16px;">You haven't liked any items yet.</div>`
     : generateProductHTML(products, true);
 
   updateLikedBadge();
